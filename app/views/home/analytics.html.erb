@@ -1,0 +1,25 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Arrival Date</th>
+      <th>Arrival Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_today.each do |timesheet| %>
+      <tr>
+        <td><%= link_to timesheet.user.username, user_path(timesheet.user_id), style: "color: blue;" %></td>
+        <td><%= timesheet.entry_time.strftime('%d-%m-%Y') %></td>
+        <td><%= timesheet.entry_time.strftime('%H:%M') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><strong>Average</strong></td>
+      <td><strong><%= @average_time %></strong></td>
+    </tr>
+  </tfoot>
+</table>
